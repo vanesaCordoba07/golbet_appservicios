@@ -17,12 +17,14 @@ public class Bet : AuditableEntity
     public BetPick Pick { get; set; }
 
     public BetStatus Status { get; set; } = BetStatus.Pending;
-
+    
     //PK
     public int MatchId { get; set; }
 
     //Navigation Property
     public Match Match { get; set; } = null!;
 
-    // Module 7 will add:  public string UserId  +  AppUser User
+    public string UserId { get; set; } = null!;   // FK -> AspNetUsers (string PK)
+    public AppUser User { get; set; } = null!;    // navigation property
+
 }
