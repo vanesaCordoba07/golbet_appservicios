@@ -32,8 +32,7 @@ public class TeamService : ITeamService
 
     public async Task UpdateAsync(TeamFormDto dto)
     {
-        var team = await _teamRepository.GetByIdAsync(dto.Id)
-            ?? throw new KeyNotFoundException($"Team {dto.Id} not found.");
+        var team = await _teamRepository.GetByIdAsync(dto.Id) ?? throw new KeyNotFoundException($"Team {dto.Id} not found.");
 
         _mapper.Map(dto, team);              // applies dto values onto the tracked entity
         await _teamRepository.UpdateAsync(team);
